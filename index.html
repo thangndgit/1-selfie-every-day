@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <section id="camera">
+        <div id="camera-preview"></div>
+        <div id="camera-last"></div>
+        <div id="camera-result" class="hide"></div>
+        <div id="camera-action">
+          <a id="btn-capture" class="btn btn--circle" href="javascript:void(takeSnapshot())"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24">
+              <g stroke="#1C274C" stroke-width="2">
+                <circle cx="12" cy="13" r="3" />
+                <path
+                  stroke-linecap="round"
+                  d="M2 13.3636c0-3.0642 0-4.59639.74902-5.697.32426-.47646.74093-.88556 1.22622-1.20392.72031-.47255 1.62209-.64145 3.00276-.70182.65885 0 1.22612-.49018 1.35533-1.1245C8.52715 3.68489 9.37805 3 10.3663 3h3.2674c.9882 0 1.8391.68489 2.033 1.63636.1292.63432.6964 1.1245 1.3553 1.1245 1.3807.06037 2.2824.22927 3.0028.70182.4852.31836.9019.72746 1.2262 1.20392.749 1.10061.749 2.6328.749 5.697 0 3.0643 0 4.5965-.749 5.6971-.3243.4764-.741.8855-1.2262 1.2039C18.9038 21 17.3433 21 14.2222 21H9.77778c-3.12103 0-4.68154 0-5.80254-.7354-.48529-.3184-.90196-.7275-1.22622-1.2039-.21156-.3109-.36336-.6562-.47229-1.0607M19 10h-1"
+                />
+              </g>
+            </svg>
+          </a>
+          <a id="btn-download" class="btn btn--circle hide" href="javascript:void(downloadImage())"
+            ><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24">
+              <g stroke="#1C274C" stroke-linecap="round" stroke-width="2">
+                <path stroke-linejoin="round" d="M12 7v7m0 0 3-3m-3 3-3-3" />
+                <path
+                  d="M16 17H8m14-5c0 4.714 0 7.0711-1.4645 8.5355C19.0711 22 16.714 22 12 22c-4.71405 0-7.07107 0-8.53553-1.4645C2 19.0711 2 16.714 2 12c0-4.71405 0-7.07107 1.46447-8.53553C4.92893 2 7.28595 2 12 2c4.714 0 7.0711 0 8.5355 1.46447.9738.97374 1.3001 2.34208 1.4094 4.53553"
+                />
+              </g>
+            </svg>
+          </a>
+          <a id="btn-recapture" class="btn btn--circle hide" href="javascript:void(togglePreview())">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24">
+              <g stroke="#1C274C" stroke-linecap="round" stroke-width="2">
+                <path
+                  stroke-linejoin="round"
+                  d="m14.5197 10.6799-.28-.2799c-1.2371-1.23712-3.2428-1.23712-4.47986 0-1.23708 1.237-1.23708 3.2427 0 4.4798 1.23706 1.2371 3.24276 1.2371 4.47986 0 .5268-.5268.8293-1.193.9074-1.8798m-.6274-2.3201L13 11m1.5197-.3201V9"
+                />
+                <path
+                  d="M2 13.3636c0-3.0642 0-4.59639.74902-5.697.32426-.47646.74093-.88556 1.22622-1.20392.72031-.47255 1.62209-.64145 3.00276-.70182.65885 0 1.22612-.49018 1.35533-1.1245C8.52715 3.68489 9.37805 3 10.3663 3h3.2674c.9882 0 1.8391.68489 2.033 1.63636.1292.63432.6964 1.1245 1.3553 1.1245 1.3807.06037 2.2824.22927 3.0028.70182.4852.31836.9019.72746 1.2262 1.20392.749 1.10061.749 2.6328.749 5.697 0 3.0643 0 4.5965-.749 5.6971-.3243.4764-.741.8855-1.2262 1.2039C18.9038 21 17.3433 21 14.2222 21H9.77778c-3.12103 0-4.68154 0-5.80254-.7354-.48529-.3184-.90196-.7275-1.22622-1.2039-.21156-.3109-.36336-.6562-.47229-1.0607"
+                />
+              </g>
+            </svg>
+          </a>
+          <a id="btn-view" class="btn btn--circle hide" href="javascript:void(viewImage())">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24">
+              <g stroke="#1C274C" stroke-width="2">
+                <path
+                  stroke-linecap="round"
+                  d="M9 4.45962C9.91153 4.16968 10.9104 4 12 4c4.1819 0 7.028 2.49956 8.7251 4.70433C21.575 9.80853 22 10.3606 22 12s-.425 2.1915-1.2749 3.2957C19.028 17.5004 16.1819 20 12 20c-4.18189 0-7.02804-2.4996-8.72511-4.7043C2.42496 14.1915 2 13.6394 2 12s.42496-2.19147 1.27489-3.29567C3.75612 8.07914 4.32973 7.43025 5 6.82137"
+                />
+                <path d="M15 12c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3Z" />
+              </g>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/webcamjs@1.0.26/webcam.min.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+  </body>
+</html>
